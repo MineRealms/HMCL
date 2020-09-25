@@ -59,7 +59,7 @@ import static org.jackhuang.hmcl.ui.FXUtils.SINE;
 import static org.jackhuang.hmcl.util.i18n.I18n.i18n;
 
 public final class MainPage extends StackPane implements DecoratorPage {
-    private final ReadOnlyObjectWrapper<State> state = new ReadOnlyObjectWrapper<>(State.fromTitle("HMCL " + Metadata.VERSION));
+    private final ReadOnlyObjectWrapper<State> state = new ReadOnlyObjectWrapper<>(State.fromTitle(Metadata.TITLE));
 
     private final PopupMenu menu = new PopupMenu();
     private final JFXPopup popup = new JFXPopup(menu);
@@ -89,8 +89,8 @@ public final class MainPage extends StackPane implements DecoratorPage {
         {
             HBox hBox = new HBox();
             hBox.setSpacing(12);
-            hBox.setAlignment(Pos.CENTER_LEFT);
-            StackPane.setAlignment(hBox, Pos.CENTER_LEFT);
+            hBox.setAlignment(Pos.CENTER_RIGHT);
+            StackPane.setAlignment(hBox, Pos.CENTER_RIGHT);
             StackPane.setMargin(hBox, new Insets(9, 12, 9, 16));
             {
                 Label lblIcon = new Label();
@@ -130,6 +130,8 @@ public final class MainPage extends StackPane implements DecoratorPage {
             }
             profile.setSelectedVersion(versions.get((index + versions.size()) % versions.size()).getId());
         });
+
+
         StackPane.setAlignment(launchPane, Pos.BOTTOM_RIGHT);
         {
             JFXButton launchButton = new JFXButton();
@@ -141,9 +143,9 @@ public final class MainPage extends StackPane implements DecoratorPage {
             launchButton.setClip(new Rectangle(-100, -100, 310, 200));
             {
                 VBox graphic = new VBox();
-                graphic.setAlignment(Pos.CENTER);
+                graphic.setAlignment(Pos.TOP_LEFT);
                 graphic.setTranslateX(-7);
-                graphic.setMaxWidth(200);
+                graphic.setMaxWidth(300);
                 Label launchLabel = new Label(i18n("version.launch"));
                 launchLabel.setStyle("-fx-font-size: 16px;");
                 Label currentLabel = new Label();

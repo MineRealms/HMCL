@@ -217,7 +217,7 @@ public class HMCLGameRepository extends DefaultGameRepository {
 
     public Image getVersionIconImage(String id) {
         if (id == null || !isLoaded())
-            return newImage("/assets/img/grass.png");
+            return newImage("/assets/img/game.png");
 
         Version version = getVersion(id).resolve(this);
         File iconFile = getVersionIconFile(id);
@@ -229,7 +229,7 @@ public class HMCLGameRepository extends DefaultGameRepository {
                         || LibraryAnalyzer.MOD_LAUNCHER_MAIN.equals(version.getMainClass())))
             return newImage("/assets/img/furnace.png");
         else
-            return newImage("/assets/img/grass.png");
+            return newImage("/assets/img/game.png");
     }
 
     public boolean saveVersionSetting(String id) {

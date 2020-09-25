@@ -32,6 +32,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -50,6 +51,10 @@ import org.jackhuang.hmcl.ui.FXUtils;
 import org.jackhuang.hmcl.ui.construct.*;
 import org.jackhuang.hmcl.util.javafx.BindingMapping;
 
+import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -76,8 +81,18 @@ public class AddAccountPane extends StackPane {
     @FXML private JFXButton btnManageServer;
     @FXML private SpinnerPane acceptPane;
     @FXML private HBox linksContainer;
+    @FXML  private Hyperlink registerButtion;
+    @FXML private Hyperlink websiteButton;
 
     private ListProperty<Hyperlink> links = new SimpleListProperty<>();
+
+    public void openRegister(MouseEvent event) throws URISyntaxException, IOException {
+        Desktop.getDesktop().browse(new URI("https://www.minerealms.cn/register"));
+    }
+    public void openWebsite(MouseEvent event) throws URISyntaxException, IOException {
+        Desktop.getDesktop().browse(new URI("https://www.minerealms.cn"));
+    }
+
 
     public AddAccountPane() {
         FXUtils.loadFXML(this, "/assets/fxml/account-add.fxml");
@@ -131,7 +146,6 @@ public class AddAccountPane extends StackPane {
         links.bind(BindingMapping.of(cboServers.getSelectionModel().selectedItemProperty())
                 .map(AddAccountPane::createHyperlinks)
                 .map(FXCollections::observableList));
-        Bindings.bindContent(linksContainer.getChildren(), links);
         linksContainer.visibleProperty().bind(cboServers.visibleProperty());
     }
 
@@ -253,6 +267,11 @@ public class AddAccountPane extends StackPane {
     @FXML
     private void onAddInjecterServer() {
         Controllers.dialog(new AddAuthlibInjectorServerPane());
+    }
+
+    @FXML
+    private void onLicence() {
+        Controllers.dialog(new LicencePane());
     }
 
     private class Selector extends BorderPane implements CharacterSelector {

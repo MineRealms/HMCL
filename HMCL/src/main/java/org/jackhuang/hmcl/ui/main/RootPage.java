@@ -18,9 +18,19 @@
 package org.jackhuang.hmcl.ui.main;
 
 import javafx.application.Platform;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.control.SkinBase;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import org.jackhuang.hmcl.event.EventBus;
 import org.jackhuang.hmcl.event.RefreshedVersionsEvent;
 import org.jackhuang.hmcl.game.HMCLGameRepository;
@@ -36,6 +46,7 @@ import org.jackhuang.hmcl.ui.FXUtils;
 import org.jackhuang.hmcl.ui.account.AccountAdvancedListItem;
 import org.jackhuang.hmcl.ui.account.AccountList;
 import org.jackhuang.hmcl.ui.account.AddAccountPane;
+import org.jackhuang.hmcl.ui.account.LicencePane;
 import org.jackhuang.hmcl.ui.construct.AdvancedListBox;
 import org.jackhuang.hmcl.ui.construct.AdvancedListItem;
 import org.jackhuang.hmcl.ui.construct.TabHeader;
@@ -52,7 +63,11 @@ import org.jackhuang.hmcl.util.io.FileUtils;
 import org.jackhuang.hmcl.util.javafx.BindingMapping;
 import org.jackhuang.hmcl.util.versioning.VersionNumber;
 
+import java.awt.*;
 import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
@@ -76,7 +91,7 @@ public class RootPage extends DecoratorTabPage {
     private final TabHeader.Tab profileTab = new TabHeader.Tab("profile");
 
     public RootPage() {
-        setLeftPaneWidth(200);
+        setLeftPaneWidth(230);
 
         EventBus.EVENT_BUS.channel(RefreshedVersionsEvent.class).register(event -> onRefreshedVersions((HMCLGameRepository) event.getSource()));
 
@@ -235,7 +250,7 @@ public class RootPage extends DecoratorTabPage {
             // third item in left sidebar
             AdvancedListItem gameItem = new AdvancedListItem();
             gameItem.activeProperty().bind(control.gameTab.selectedProperty());
-            gameItem.setImage(newImage("/assets/img/bookshelf.png"));
+            gameItem.setImage(newImage("/assets/img/list.png"));
             gameItem.setTitle(i18n("version.manage"));
             gameItem.setOnAction(e -> control.selectPage(control.gameTab));
 
@@ -248,9 +263,28 @@ public class RootPage extends DecoratorTabPage {
             // fifth item in left sidebar
             AdvancedListItem launcherSettingsItem = new AdvancedListItem();
             launcherSettingsItem.activeProperty().bind(control.settingsTab.selectedProperty());
-            launcherSettingsItem.setImage(newImage("/assets/img/command.png"));
+            launcherSettingsItem.setImage(newImage("/assets/img/set.png"));
             launcherSettingsItem.setTitle(i18n("settings.launcher"));
             launcherSettingsItem.setOnAction(e -> control.selectPage(control.settingsTab));
+
+            AdvancedListItem newsItem = new AdvancedListItem();
+            newsItem.activeProperty().bind(control.settingsTab.selectedProperty());
+            newsItem.setImage(newImage("assets/img/mr.png"));
+            newsItem.setTitle("访问官网");
+            newsItem.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                public void handle(MouseEvent event) {
+                    //new LicenceX().start(new Stage());
+                    Desktop dp = Desktop.getDesktop();
+                    try {
+                        dp.browse(new URI("https://www.minerealms.cn"));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (URISyntaxException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
 
             // the left sidebar
             AdvancedListBox sideBar = new AdvancedListBox()
@@ -259,14 +293,13 @@ public class RootPage extends DecoratorTabPage {
                     .startCategory(i18n("version").toUpperCase())
                     .add(gameListItem)
                     .add(gameItem)
-                    .startCategory(i18n("profile.title").toUpperCase())
-                    .add(profileListItem)
                     .startCategory(i18n("launcher").toUpperCase())
-                    .add(launcherSettingsItem);
+                    .add(launcherSettingsItem)
+                    .startCategory("其他").add(newsItem);
 
             // the root page, with the sidebar in left, navigator in center.
             BorderPane root = new BorderPane();
-            sideBar.setPrefWidth(200);
+            sideBar.setPrefWidth(230);
             root.setLeft(sideBar);
 
             {

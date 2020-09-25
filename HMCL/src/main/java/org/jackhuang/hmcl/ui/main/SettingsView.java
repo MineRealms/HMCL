@@ -445,7 +445,6 @@ public abstract class SettingsView extends StackPane {
                     row.setValignment(VPos.TOP);
                     row.setVgrow(Priority.SOMETIMES);
                     gridPane.getRowConstraints().setAll(row, row, row, row, row, row);
-
                     {
                         Label label = new Label(i18n("about.copyright"));
                         GridPane.setRowIndex(label, 0);
@@ -459,6 +458,7 @@ public abstract class SettingsView extends StackPane {
                         GridPane.setColumnIndex(label, 1);
                         gridPane.getChildren().add(label);
                     }
+
                     {
                         Label label = new Label(i18n("about.author"));
                         GridPane.setRowIndex(label, 1);
@@ -513,11 +513,11 @@ public abstract class SettingsView extends StackPane {
                         gridPane.getChildren().add(label);
                     }
                     {
-                        Label label = new Label(i18n("about.open_source"));
-                        GridPane.setRowIndex(label, 5);
-                        GridPane.setColumnIndex(label, 0);
-                        gridPane.getChildren().add(label);
-                    }
+                    Label label = new Label(i18n("about.open_source"));
+                    GridPane.setRowIndex(label, 5);
+                    GridPane.setColumnIndex(label, 0);
+                    gridPane.getChildren().add(label);
+                }
                     {
                         Label label = new Label(i18n("about.open_source.statement"));
                         label.setWrapText(true);

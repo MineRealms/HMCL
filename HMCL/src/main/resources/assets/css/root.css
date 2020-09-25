@@ -16,6 +16,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 .root {
+-fx-font-family: "Microsoft YaHei";
 }
 
 .scroll-bar .thumb {
@@ -243,7 +244,7 @@
 
 .jfx-layout-heading {
     -fx-font-size: 20.0px;
-    -fx-font-family: -fx-base-font-family;
+    -fx-font-family: "微软雅黑";
     -fx-alignment: center-left;
     -fx-padding: 5.0 0.0 5.0 0.0;
 }
@@ -266,12 +267,12 @@
 
 .dialog-accept {
     -fx-text-fill: #03A9F4;
-    -fx-font-family: -fx-base-font-family;
+    -fx-font-family: "微软雅黑";
     -fx-padding: 0.7em 0.8em;
 }
 
 .dialog-cancel {
-    -fx-font-family: -fx-base-font-family;
+    -fx-font-family: "微软雅黑";
     -fx-padding: 0.7em 0.8em;
 }
 

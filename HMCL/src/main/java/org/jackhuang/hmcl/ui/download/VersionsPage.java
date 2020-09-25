@@ -142,7 +142,7 @@ public final class VersionsPage extends BorderPane implements WizardPage, Refres
                     switch (remoteVersion.getVersionType()) {
                         case RELEASE:
                             content.setSubtitle(i18n("version.game.release"));
-                            imageView.setImage(new Image("/assets/img/grass.png", 32, 32, false, true));
+                            imageView.setImage(new Image("/assets/img/game.png", 32, 32, false, true));
                             break;
                         case SNAPSHOT:
                             content.setSubtitle(i18n("version.game.snapshot"));

@@ -40,6 +40,7 @@ import org.jackhuang.hmcl.auth.yggdrasil.YggdrasilAccount;
 import org.jackhuang.hmcl.auth.yggdrasil.YggdrasilAccountFactory;
 import org.jackhuang.hmcl.task.Schedulers;
 
+import javax.swing.undo.CannotRedoException;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.HashMap;
@@ -308,12 +309,12 @@ public final class Accounts {
     // ==== Login type name i18n ===
     private static Map<AccountFactory<?>, String> unlocalizedLoginTypeNames = mapOf(
             pair(Accounts.FACTORY_OFFLINE, "account.methods.offline"),
-            pair(Accounts.FACTORY_MOJANG, "account.methods.yggdrasil"),
+            pair(Accounts.FACTORY_MOJANG, "account.methods.mojang"),
             pair(Accounts.FACTORY_AUTHLIB_INJECTOR, "account.methods.authlib_injector"));
 
     public static String getLocalizedLoginTypeName(AccountFactory<?> factory) {
         return i18n(Optional.ofNullable(unlocalizedLoginTypeNames.get(factory))
-                .orElseThrow(() -> new IllegalArgumentException("Unrecognized account factory")));
+                .orElseThrow(() -> new CannotRedoException()));
     }
     // ====
 }

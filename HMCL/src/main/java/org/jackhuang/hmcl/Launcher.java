@@ -95,8 +95,7 @@ public final class Launcher extends Application {
             LOG.info("Current Directory: " + Paths.get("").toAbsolutePath());
             LOG.info("HMCL Directory: " + Metadata.HMCL_DIRECTORY);
             LOG.info("Memory: " + Runtime.getRuntime().maxMemory() / 1024 / 1024 + "MB");
-            ManagementFactory.getMemoryPoolMXBeans().stream().filter(bean -> bean.getName().equals("Metaspace")).findAny()
-                    .ifPresent(bean -> LOG.info("Metaspace: " + bean.getUsage().getUsed() / 1024 / 1024 + "MB"));
+            ManagementFactory.getMemoryPoolMXBeans().stream().filter(bean -> bean.getName().equals("Metaspace")).findAny() .ifPresent(bean -> LOG.info("Metaspace: " + bean.getUsage().getUsed() / 1024 / 1024 + "MB"));
 
             launch(args);
         } catch (Throwable e) { // Fucking JavaFX will suppress the exception and will break our crash reporter.

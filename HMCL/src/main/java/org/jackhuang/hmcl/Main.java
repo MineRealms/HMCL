@@ -48,7 +48,8 @@ public final class Main {
         System.setProperty("http.agent", "HMCL/" + Metadata.VERSION);
         System.setProperty("javafx.autoproxy.disable", "true");
 
-        checkJavaFX();
+        checkJFX();
+        checkNM();
         checkDirectoryPath();
 
         // This environment check will take ~300ms
@@ -75,10 +76,18 @@ public final class Main {
         }
     }
 
-    private static void checkJavaFX() {
+    private static void checkJFX() {
         try {
             Class.forName("javafx.application.Application");
         } catch (ClassNotFoundException e) {
+            showErrorAndExit(i18n("fatal.missing_javafx"));
+        }
+    }
+
+    private static void checkNM() {
+        try {
+            Class.forName("javafx.application.Platform");
+        } catch (NoClassDefFoundError | ClassNotFoundException e) {
             showErrorAndExit(i18n("fatal.missing_javafx"));
         }
     }

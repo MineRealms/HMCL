@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.shape.Box?>
+<?import javafx.scene.text.Font?>
+
+<FlowPane id="pane" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.191" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.minerealms.events">
+   <children>
+      <JFXButton id="platformExitButton" buttonType="RAISED" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onMouseClicked="#onBTN" prefHeight="287.0" prefWidth="400.0" ripplerFill="#d30f0f" text="确 定">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+         <font>
+            <Font size="29.0" />
+         </font>
+      </JFXButton>
+      <Box />
+   </children>
+</FlowPane>

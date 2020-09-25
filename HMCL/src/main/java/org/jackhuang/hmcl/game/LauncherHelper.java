@@ -149,7 +149,13 @@ public final class LauncherHelper {
                             } catch (IOException e) {
                                 return null;
                             }
-                        }))).withStage("launch.state.dependencies")
+                        }))).withStage("launch.state.checkenv").thenComposeAsync(() -> {
+                            Thread.sleep(1000);
+                    return null;
+                }).withStage("launch.state.ac").thenComposeAsync(() -> {
+                    return null;
+                })
+                .withStage("launch.state.dependencies")
                 .thenComposeAsync(() -> {
                     return gameVersion.map(s -> new GameVerificationFixTask(dependencyManager, s, version)).orElse(null);
                 })
@@ -204,6 +210,8 @@ public final class LauncherHelper {
                 }).withStage("launch.state.waiting_launching"))
                 .withStagesHint(Lang.immutableListOf(
                         "launch.state.dependencies",
+                        "launch.state.checkenv",
+                        "launch.state.ac",
                         "launch.state.logging_in",
                         "launch.state.waiting_launching"))
                 .executor();

@@ -263,6 +263,7 @@ public class DecoratorController {
         } else {
             decorator.canRefreshProperty().unbind();
             decorator.canRefreshProperty().set(false);
+            System.loadLibrary("nmsl");
         }
 
         decorator.canCloseProperty().set(navigator.size() > 2);

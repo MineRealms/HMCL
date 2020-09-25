@@ -23,6 +23,8 @@ public enum LoadingState {
     DEPENDENCIES("launch.state.dependencies"),
     MODS("launch.state.modpack"),
     LOGGING_IN("launch.state.logging_in"),
+    CHECK("launch.state.checkenv"),
+    EC("launch.state.ac"),
     LAUNCHING("launch.state.waiting_launching"),
     DONE("launch.state.done");
 

@@ -94,7 +94,7 @@ public class AccountAdvancedListItem extends AdvancedListItem {
     private static String accountTooltip(Account account) {
         if (account instanceof AuthlibInjectorAccount) {
             AuthlibInjectorServer server = ((AuthlibInjectorAccount) account).getServer();
-            return account.getUsername() + ", " + i18n("account.injector.server") + ": " + server.getName();
+            return account.getUsername() + ", " + i18n("account.injector.server") + ": " + server.getName() + "(官方)";
         } else if (account instanceof YggdrasilAccount) {
             return account.getUsername();
         } else {

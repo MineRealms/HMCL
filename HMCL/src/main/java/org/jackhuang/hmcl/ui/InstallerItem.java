@@ -66,7 +66,7 @@ public class InstallerItem extends Control {
 
         switch (id) {
             case "game":
-                imageUrl = "/assets/img/grass.png";
+                imageUrl = "/assets/img/game.png";
                 break;
             case "fabric":
                 imageUrl = "/assets/img/fabric.png";

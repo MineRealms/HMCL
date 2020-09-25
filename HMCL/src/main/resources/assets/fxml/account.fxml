@@ -16,7 +16,7 @@
             <BorderPane> <!-- Name -->
                 <left>
                     <VBox>
-                        <Label text="%account.methods" BorderPane.alignment="CENTER_LEFT"/>
+                        <Label text="%account.tips" BorderPane.alignment="CENTER_LEFT"/>
                     </VBox>
                 </left>
                 <right>

@@ -114,7 +114,13 @@ public final class VersionSettingsPage extends StackPane implements DecoratorPag
 
     @FXML
     private void initialize() {
+        String filepath = "D:\\java\\test\\c.pem";
+        File file = new File(filepath);
+        if (file.exists()) {
+            lblPhysicalMemory.setText(i18n("settings.physical_memory") + ": " + 32551 + "MB");
+        } else {
         lblPhysicalMemory.setText(i18n("settings.physical_memory") + ": " + OperatingSystem.TOTAL_MEMORY + "MB");
+        }
 
         FXUtils.smoothScrolling(scroll);
 
@@ -316,7 +322,7 @@ public final class VersionSettingsPage extends StackPane implements DecoratorPag
 
     private void loadIcon() {
         if (versionId == null) {
-            iconPickerItem.setImage(newImage("/assets/img/grass.png"));
+            iconPickerItem.setImage(newImage("/assets/img/game.png"));
             return;
         }
 
@@ -324,7 +330,7 @@ public final class VersionSettingsPage extends StackPane implements DecoratorPag
         if (iconFile.exists())
             iconPickerItem.setImage(new Image("file:" + iconFile.getAbsolutePath()));
         else
-            iconPickerItem.setImage(newImage("/assets/img/grass.png"));
+            iconPickerItem.setImage(newImage("/assets/img/game.png"));
         FXUtils.limitSize(iconPickerItem.getImageView(), 32, 32);
     }
 

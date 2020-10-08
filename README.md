@@ -1,6 +1,6 @@
 # Hello Minecraft! Launcher [![Build Status](https://ci.huangyuhui.net/job/HMCL/badge/icon?.svg)](https://ci.huangyuhui.net/job/HMCL)
 
-## Note: This HMCL launcher is a personal modified version provide to The MineRealms United Server
+**Note: This HMCL launcher is a personal modified version provide to The MineRealms United Server**
 
 ## Introduction
 
